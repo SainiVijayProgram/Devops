@@ -1,0 +1,23 @@
+name: 'Custom Env Vars'
+
+on:
+  workflow_dispatch:
+  
+env:
+  DAY_OF_WEEK: Funday
+  testvar: val1
+
+jobs:
+  mainjob:
+    name: 'Show the env vars'
+    runs-on: [self-hosted, Windows, X64]
+    env:
+      Greeting: Dear
+      testvar: val2
+    
+    steps:
+    - name: show-values-of-env-vars
+      run: echo "$Greeting $First_Name. Today is $DAY_OF_WEEK!"
+      env:
+          First_Name: Student
+          testvar: val3
