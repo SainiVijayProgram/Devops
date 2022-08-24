@@ -1,17 +1,22 @@
 name: 'GitHub Workflow Demo'
 
+# 'on' is used to define the trigger of this workflow
 on:
+  # Below 'push' trigger is to ensure this workflow runs when a  new push happens
+  # in a branch named "dev" and file at path .github/workflows/ is modified.
   push:
     branches:
     - "dev"
     paths:
     - ".github/workflows/*"
-
-    
+  
+  # Below 'pull_request' trigger is to ensure this workflow runs on a pull_request event 
+  # for any branch except those whose name starts with test/exp*
   pull_request:
     branches-ignore:
     - 'test/exp*'
   
+  # workflow-dispatch is to ensure we can run this workflow manually
   workflow_dispatch:
     environment:
       description: 'Environment to run tests against'

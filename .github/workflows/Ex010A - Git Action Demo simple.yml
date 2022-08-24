@@ -1,3 +1,5 @@
+# This is a simple workflow
+
 name: 'GitHub Workflow Demo'
 
 on: workflow_dispatch
