@@ -1,6 +1,5 @@
-# This is a simple workflow
-
-name: 'GitHub Workflow Demo'
+name: .QA-SolutionPackage
+ 
 
 on: workflow_dispatch
 
