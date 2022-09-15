@@ -1,4 +1,4 @@
-name: .QA-SolutionPackage
+name: ".QA-SolutionPackage"
  
 
 on: workflow_dispatch
