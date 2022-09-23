@@ -1,6 +1,4 @@
 on:
-  schedule:
-  - cron: '0 * * * *'
   workflow_dispatch:
 
 name: Passing Variable Values to another step
