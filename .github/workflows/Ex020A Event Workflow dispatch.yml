@@ -1,31 +1,34 @@
-# A workflow that uses the if conditional to check if the github.ref 
-# (the branch or tag ref that triggered the workflow run) matches 
-# refs/heads/main in order to proceed with the following steps in the 
-# workflow would look something like this:
-
-name: Conditional StatementVIJAY
+name: How to run workflow Manually
 
 on:
   workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Log level'
+        required: true
+        default: 'warning' 
+        type: choice
+        options:
+        - info
+        - warning
+        - debug 
+      print_tags:
+        description: 'True to print to STDOUT'
+        required: true 
+        type: boolean 
       tags:
         description: 'Test scenario tags'
         required: true 
         type: string
-  
-env:
-  test: Vijay
+      environment:
+        description: 'Environment to run tests against'
+        type: environment
+        required: true 
 
 jobs:
-  prod-check:
-    name: run-job-if-condition-is-satisfied
-    
+  print-tag:
     runs-on: ubuntu-latest
+    if:  ${{ inputs.print_tags }} 
     steps:
-
-    - name: step-name1
-      if: ${{ inputs.tags }} 
-      run: echo "I am executed"
-
-    - name: step-name2
-      if: ${{ env.test }} 
-      run: echo "I am executed"
+      - name: Print the input tag to STDOUT
+        run: echo  The tags are ${{ inputs.tags }} 
